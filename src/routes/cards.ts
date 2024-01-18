@@ -29,10 +29,6 @@ router.post("/add", async (req, res) => {
 
 router.delete("/delete/:id", async (req, res) => {
     try {
-        //const user = (req as any).user as ReturnType<typeof Tokens.prototype.decodeToken>
-        // TODO: make sure the user that is trying to delete the cars
-        // is the user that created that card
-        // currently any authenticated user is allowed to delete any card
         const id = req.params.id
         const product = await Card.findByIdAndDelete(id)
         return res.json(product);

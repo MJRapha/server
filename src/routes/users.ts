@@ -49,8 +49,6 @@ router.post("/signin", validateSignIn, async (req, res) => {
         if (!isPasswordValid) {
             return res.status(401).json({ message: "Invalid Credentials" });
         }
-        //const tokenEncoder = new Tokens()
-        //const token = tokenEncoder.encodeToken(user as any)
         const token = jwt.sign({ _id: user._id, email: user.email, role: user.role }, authConfig.secret, {
             expiresIn: "30d",
         })
